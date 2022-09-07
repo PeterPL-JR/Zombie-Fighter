@@ -1,0 +1,10 @@
+body {
+    background-color: #121212;
+    margin-top: 60px;
+}
+#container {
+    text-align: center;
+}
+canvas {
+    cursor: crosshair;
+}
