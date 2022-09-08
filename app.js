@@ -14,6 +14,7 @@ var playerY = HEIGHT / 2 - PLAYER_SIZE / 2;
 const keys = [];
 const projectiles = [];
 const zombies = [];
+const textObjs = [];
 
 function init() {
     canvas.width = WIDTH;
@@ -53,6 +54,16 @@ function draw() {
         }
         zombie.update();
         zombie.render();
+    }
+
+    // Text objects rendering
+    for(var t = 0; t < textObjs.length; t++) {
+        var text = textObjs[t];
+        if(text.destroyed) {
+            textObjs.splice(t, 1);
+            continue;
+        }
+        text.render();
     }
 
     // Player rendering

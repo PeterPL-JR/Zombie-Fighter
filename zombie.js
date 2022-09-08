@@ -4,18 +4,6 @@ const RIGHT_SIDE = 1;
 const TOP_SIDE = 2;
 const BOTTOM_SIDE = 3;
 
-const FONT_SIZE = 40;
-const FONT_FAMILY = "Verdana";
-const FONT_WEIGHT = "bold";
-
-const TEXT_SPEED = 50;
-
-const FONT = getFontString(
-    FONT_SIZE, 
-    FONT_FAMILY, 
-    FONT_WEIGHT
-);
-
 class Zombie {
 
     static SIZE = 60;
@@ -77,7 +65,7 @@ class Zombie {
 
             const positionX = BEGIN + i * HEALTH_POINT_WIDTH;
             const positionY = this.y - HEALTH_POINT_HEIGHT - POS_CORRECT;
-            const color = i <= this.health ? HEALTH_DEFAULT_COLOR : HEALTH_LOST_COLOR;
+            const color = (i <= this.health ? HEALTH_DEFAULT_COLOR : HEALTH_LOST_COLOR).getString();
             
             ctx.fillStyle = color;
             ctx.fillRect(positionX, positionY, HEALTH_POINT_WIDTH, HEALTH_POINT_HEIGHT);
@@ -106,8 +94,8 @@ class Zombie {
             setColor(Zombie.COLOR);
         }, HURT_TIME);
 
-        const POS_CORRECT = 100;
-        renderNumber(power, this.x + Zombie.SIZE / 2, this.y - POS_CORRECT, HEALTH_DEFAULT_COLOR, FONT, TEXT_SPEED);
+        const POS_CORRECT = 50;
+        textObjs.push(new TextString("-" + power, this.x + Zombie.SIZE / 2, this.y - POS_CORRECT, HEALTH_DEFAULT_COLOR, FONT, TEXT_SPEED));
 
         if(this.health <= 0) {
             this.destroy();
@@ -125,17 +113,4 @@ function trySpawnZombie() {
     if(rand == SPAWN_ZOMBIE) {
         zombies.push(new Zombie());
     }
-}
-
-function renderNumber(number, beginX, beginY, color, font, speed) {
-    ctx.textStyle = color;
-    ctx.font = font;
-
-    setInterval(function() {
-
-    }, speed);
-}
-
-function getFontString(fontSize, fontFamily, fontWeight) {
-    return `${fontWeight} ${fontSize}px ${fontFamily}`;
 }

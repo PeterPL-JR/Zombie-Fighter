@@ -1,5 +1,5 @@
-const HEALTH_DEFAULT_COLOR = "#d90000";
-const HEALTH_LOST_COLOR = "#790000";
+const HEALTH_DEFAULT_COLOR = new Color(217, 0, 0);
+const HEALTH_LOST_COLOR = new Color(121, 0, 0);
 
 class Projectile {
     
