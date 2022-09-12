@@ -95,7 +95,7 @@ class Zombie {
         }, HURT_TIME);
 
         const POS_CORRECT = 50;
-        textObjs.push(new TextString("-" + power, this.x + Zombie.SIZE / 2, this.y - POS_CORRECT, HEALTH_DEFAULT_COLOR, FONT, TEXT_SPEED));
+        textObjs.push(new TextString("-" + power, this.x + Zombie.SIZE / 2, this.y - POS_CORRECT, HEALTH_DEFAULT_COLOR, FONT, TEXT_SPEED, TEXT_BLUR_SPEED));
 
         if(this.health <= 0) {
             this.destroy();
